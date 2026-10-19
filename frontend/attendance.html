@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="login-container attendance-container">
+        <h1>Attendance Dashboard</h1>
+        <p>Manage your daily attendance</p>
+
+        <div class="attendance-actions">
+            <button type="button" id="checkInBtn">
+                Check In
+            </button>
+
+            <button type="button" id="checkOutBtn">
+                Check Out
+            </button>
+        </div>
+        
+<!-- Temporary Leave Section -->
+<div class="leave-section">
+    <h2>Temporary Leave</h2>
+    <p>Enter your expected return time.</p>
+
+    <div class="input-group">
+        <label for="expectedReturnTime">
+            Expected Return Time
+        </label>
+        <input type="time" id="expectedReturnTime" required>
+    </div>
+
+    <div class="attendance-actions">
+        <button type="button" id="leaveWorkBtn">
+            Leave Work
+        </button>
+
+        <button type="button" id="returnWorkBtn">
+            Return to Work
+        </button>
+    </div>
+
+    <p id="leaveMessage" role="status"></p>
+</div>
+
+
+        <p id="attendanceMessage" role="status"></p>
+
+        <h2>Attendance Records</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                    </tr>
+                </thead>
+
+                
+<h2>Attendance Records</h2>
+
+<div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Arrive Time</th>
+                <th>Leave Time</th>
+                <th>Expected Return</th>
+                <th>Actual Return</th>
+                <th>Check Out</th>
+            </tr>
+        </thead>
+
+        <tbody id="recordsTable">
+        </tbody>
+    </table>
+</div>
+<script src="script.js"></script>
+</body>
