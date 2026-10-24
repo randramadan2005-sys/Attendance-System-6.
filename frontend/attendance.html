@@ -4,84 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Dashboard</title>
+
+    <title>Attendance Actions</title>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 
-<body>
-    <div class="login-container attendance-container">
-        <h1>Attendance Dashboard</h1>
-        <p>Manage your daily attendance</p>
+<body class="attendance-page">
+    
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <span class="sidebar-logo">N</span>
 
-        <div class="attendance-actions">
-            <button type="button" id="checkInBtn">
-                Check In
-            </button>
-
-            <button type="button" id="checkOutBtn">
-                Check Out
-            </button>
+        <div>
+            <h2>NEXORA</h2>
+            <p>TECHNOLOGIES</p>
         </div>
-        
-<!-- Temporary Leave Section -->
-<div class="leave-section">
-    <h2>Temporary Leave</h2>
-    <p>Enter your expected return time.</p>
-
-    <div class="input-group">
-        <label for="expectedReturnTime">
-            Expected Return Time
-        </label>
-        <input type="time" id="expectedReturnTime" required>
     </div>
 
-    <div class="attendance-actions">
-        <button type="button" id="leaveWorkBtn">
-            Leave Work
-        </button>
+    <p class="sidebar-label">MAIN MENU</p>
 
-        <button type="button" id="returnWorkBtn">
-            Return to Work
-        </button>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+            <span class="sidebar-icon">⌂</span>
+            <span class="sidebar-text">Dashboard</span>
+        </a>
+
+        <a href="attendance.html" class="sidebar-link active">
+            <span class="sidebar-icon">◷</span>
+            <span class="sidebar-text">Attendance</span>
+        </a>
+
+        <a href="history.html" class="sidebar-link">
+            <span class="sidebar-icon">▤</span>
+            <span class="sidebar-text">Attendance History</span>
+        </a>
+
+        <a href="dashboard.html#contact" class="sidebar-link">
+            <span class="sidebar-icon">✉</span>
+            <span class="sidebar-text">Contact Us</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <p>💛 Innovate Today.</p>
+        <p>Shape Tomorrow.</p>
     </div>
-
-    <p id="leaveMessage" role="status"></p>
-</div>
+</aside>
 
 
-        <p id="attendanceMessage" role="status"></p>
+    <header class="attendance-header">
+        <h1>⏰ Employee Attendance</h1>
+        <a href="dashboard.html">← Dashboard</a>
+    </header>
 
-        <h2>Attendance Records</h2>
+    <main class="attendance-main">
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Check In</th>
-                        <th>Check Out</th>
-                    </tr>
-                </thead>
+        <section class="attendance-intro">
+            <div class="attendance-icon">👋</div>
+            <h2>Manage Your Workday</h2>
+            <p>Record your arrival, departure and temporary leave.</p>
+        </section>
 
-                
-<h2>Attendance Records</h2>
+        <section class="attendance-card">
+            <h2>🕒 Daily Attendance</h2>
+            <p>Use the buttons to record your working hours.</p>
 
-<div class="table-wrapper">
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Arrive Time</th>
-                <th>Leave Time</th>
-                <th>Expected Return</th>
-                <th>Actual Return</th>
-                <th>Check Out</th>
-            </tr>
-        </thead>
+            <div class="attendance-actions">
+                <button type="button" id="checkInBtn">
+                    🟡 Check In
+                </button>
 
-        <tbody id="recordsTable">
-        </tbody>
-    </table>
-</div>
-<script src="script.js"></script>
+                <button type="button" id="checkOutBtn">
+                    🚪 Check Out
+                </button>
+            </div>
+
+            <p id="attendanceMessage" role="status"></p>
+        </section>
+
+        <section class="attendance-card leave-card">
+            <h2>☕ Temporary Leave</h2>
+            <p>Enter your expected return time.</p>
+
+            <div class="leave-input">
+                <label for="expectedReturnTime">
+                    Expected Return Time
+                </label>
+
+                <input
+                    type="time"
+                    id="expectedReturnTime"
+                    required
+                >
+            </div>
+
+            <div class="attendance-actions">
+                <button type="button" id="leaveWorkBtn">
+                    🚶 Leave Work
+                </button>
+
+                <button type="button" id="returnWorkBtn">
+                    🏢 Return to Work
+                </button>
+            </div>
+
+            <p id="leaveMessage" role="status"></p>
+        </section>
+
+        <section class="history-link-card">
+            <h2>📋 Attendance History</h2>
+            <p>View your recorded attendance details on a separate page.</p>
+
+            <a href="history.html" class="history-button">
+                View Attendance History →
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="attendance-footer">
+        Employee Attendance System © 2026
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+</html>

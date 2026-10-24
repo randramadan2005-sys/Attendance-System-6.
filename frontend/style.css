@@ -1,65 +1,64 @@
 
-/* General page style */
+/* =========================
+   Shared Login and Sign Up Design
+   ========================= */
+
+:root {
+    --black: #171717;
+    --white: #FFFFFF;
+    --dark-gray: #444444;
+    --kamooni: #C5A16A;
+    --light-gray: #F2F2F2;
+    --border: #D9D9D9;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #F5F5F5;
-    color: #555555;
-
+    padding: 20px;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: var(--light-gray);
+    color: var(--dark-gray);
 }
 
-/* Main container */
+/* Login and Sign Up containers */
+
 .login-container {
-    background-color: #FFFFFF;
     width: 350px;
-    padding: 35px;
-    border-radius: 18px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 25px #0000000D;
 }
 
-/* Main heading */
-h1 {
-    color: #E8A0BF;
+.login-container h1 {
+    color: var(--black);
     margin-bottom: 12px;
 }
 
-/* Description */
-p {
-    color: #777777;
+.login-container p {
+    color: #666666;
     line-height: 1.6;
 }
 
-/* Buttons */
-button {
-    background-color: #F4C2D7;
-    color: #555555;
-    border: none;
-    padding: 12px 22px;
-    margin: 8px 4px;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+.signup-container {
+    width: 430px;
 }
 
-/* Button hover effect */
-button:hover {
-    background-color: #E8A0BF;
-    color: #FFFFFF;
-}
+/* Forms */
 
-/* Login form layout */
-#loginForm {
+#loginForm,
+#signupForm {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin-top: 25px;
+    gap: 16px;
+    margin-top: 24px;
 }
 
 .input-group {
@@ -70,188 +69,87 @@ button:hover {
 }
 
 .input-group label {
-    width: 85px;
+    width: 90px;
     flex-shrink: 0;
-    color: #555555;
+    color: var(--dark-gray);
+}
+
+.signup-container .input-group label {
+    width: 115px;
 }
 
 .input-group input {
     flex: 1;
     min-width: 0;
-    padding: 11px;
-    border: 1px solid #E8A0BF;
-    border-radius: 8px;
     box-sizing: border-box;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     font-size: 14px;
 }
 
-#loginForm button {
+.input-group input:focus {
+    outline: 2px solid var(--kamooni);
+    border-color: var(--kamooni);
+}
+
+/* Buttons */
+
+.login-container button {
     width: 100%;
-    margin: 0;
-}
-
-/* Sign Up Page */
-.signup-container {
-    width: 430px;
-    max-width: calc(100% - 80px);
-}
-
-.signup-container h1 {
-    color: #E8A0BF;
-}
-
-.signup-container .input-group label {
-    width: 125px;
-    flex-shrink: 0;
-}
-
-.signup-container .input-group input {
-    flex: 1;
-    min-width: 0;
-}
-
-#signupForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-#signupForm button {
-    width: 100%;
-    margin: 5px 0;
-}
-
-.login-link {
-    margin-top: 22px;
-    font-size: 14px;
-}
-
-.login-link a {
-    color: #D982A8;
-    text-decoration: none;
+    padding: 13px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 9px;
+    background: var(--kamooni);
+    color: var(--black);
+    font-size: 15px;
     font-weight: bold;
+    cursor: pointer;
+    transition: background 0.25s ease;
 }
 
-.login-link a:hover {
-    text-decoration: underline;
+.login-container button:hover {
+    background: #B18B51;
 }
-/* Sign Up link on Login page */
+
+/* Links */
+
+.login-link,
 .signup-link {
     margin-top: 20px;
     font-size: 14px;
-    color: #777777;
 }
 
-.signup-link a {
-    color: #D982A8;
+.login-container a {
+    color: #896735;
     text-decoration: none;
     font-weight: bold;
 }
 
-.signup-link a:hover {
-    color: #E8A0BF;
+.login-container a:hover {
     text-decoration: underline;
 }
 
-/* Attendance Dashboard */
+/* Mobile screens */
 
-.attendance-container {
-    width: 90%;
-    max-width: 650px;
+@media (max-width: 480px) {
+    .login-container {
+        padding: 22px;
+    }
+
+    .input-group {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .input-group label,
+    .signup-container .input-group label {
+        width: auto;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
 }
-
-.attendance-actions {
-    display: flex;
-    gap: 12px;
-    margin: 25px 0;
-}
-
-.attendance-actions button {
-    flex: 1;
-    background-color: #E8A0BF;
-    color: #593B4B;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.attendance-actions button:hover {
-    background-color: #F4C2D7;
-}
-
-.attendance-container h2 {
-    color: #593B4B;
-    margin-top: 25px;
-}
-
-.table-wrapper {
-    overflow-x: auto;
-}
-
-.attendance-container table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #FFFFFF;
-}
-
-.attendance-container th,
-.attendance-container td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #E5E5E5;
-    text-align: center;
-}
-
-.attendance-container th {
-    background-color: #F4C2D7;
-    color: #593B4B;
-}
-
-#attendanceMessage {
-    color: #593B4B;
-    min-height: 20px;
-}
-
-/* Temporary Leave Section */
-
-.leave-section {
-    margin-top: 25px;
-    padding: 20px;
-    background-color: #F5F5F5;
-    border-radius: 12px;
-}
-
-.leave-section h2 {
-    color: #593B4B;
-}
-
-.leave-section input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    border: 1px solid #E8A0BF;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-}
-
-.leave-section button {
-    flex: 1;
-    background-color: #E8A0BF;
-    color: #593B4B;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    cursor: pointer;
-}
-
-.leave-section button:hover {
-    background-color: #F4C2D7;
-}
-
-#leaveMessage {
-    color: #593B4B;
-    min-height: 20px;
-}
-

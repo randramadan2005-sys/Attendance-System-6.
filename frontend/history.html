@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance History</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+
+<body class="history-page">
+    
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <span class="sidebar-logo">N</span>
+
+        <div>
+            <h2>NEXORA</h2>
+            <p>TECHNOLOGIES</p>
+        </div>
+    </div>
+
+    <p class="sidebar-label">MAIN MENU</p>
+
+    <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+            <span class="sidebar-icon">⌂</span>
+            <span class="sidebar-text">Dashboard</span>
+        </a>
+
+        <a href="attendance.html" class="sidebar-link">
+            <span class="sidebar-icon">◷</span>
+            <span class="sidebar-text">Attendance</span>
+        </a>
+
+        <a href="history.html" class="sidebar-link active">
+            <span class="sidebar-icon">▤</span>
+            <span class="sidebar-text">Attendance History</span>
+        </a>
+
+        <a href="dashboard.html#contact" class="sidebar-link">
+            <span class="sidebar-icon">✉</span>
+            <span class="sidebar-text">Contact Us</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <p>💛 Innovate Today.</p>
+        <p>Shape Tomorrow.</p>
+    </div>
+</aside>
+
+
+    <header class="history-header">
+        <h1>📋 Attendance History</h1>
+        <a href="attendance.html">← Back to Attendance</a>
+    </header>
+
+    <main class="history-main">
+
+        <section class="history-intro">
+            <h2>Workday Records 📊</h2>
+            <p>Review your recorded arrival, leave and departure times.</p>
+        </section>
+
+        <section class="history-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Arrive Time</th>
+                            <th>Leave Time</th>
+                            <th>Expected Return</th>
+                            <th>Actual Return</th>
+                            <th>Check Out</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recordsTable">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

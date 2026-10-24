@@ -1,0 +1,375 @@
+
+/* ===== Nexora Dashboard ===== */
+
+.dashboard-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f4f0;
+    color: #25251f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+
+.company-header {
+    min-height: 76px;
+    padding: 0 7%;
+    background: #20201d;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: #c6b77a;
+    color: #20201d;
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+.company-logo small {
+    display: block;
+    margin-top: 4px;
+    color: #c6b77a;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.header-label {
+    color: #d6d3c8;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Main layout */
+
+.dashboard-main {
+    width: min(1080px, 88%);
+    margin: 0 auto;
+    padding: 45px 0;
+}
+
+/* Welcome section */
+
+.welcome-section {
+    position: relative;
+    overflow: hidden;
+    padding: 55px 45px;
+    margin-bottom: 28px;
+    background: #292923;
+    color: #ffffff;
+    border-radius: 22px;
+    animation: fadeInUp 0.7s ease both;
+}
+
+.welcome-section::after {
+    content: "N";
+    position: absolute;
+    right: 35px;
+    bottom: -95px;
+    color: rgba(198, 183, 122, 0.08);
+    font-size: 300px;
+    font-weight: 800;
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: #c6b77a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.welcome-section h1 {
+    max-width: 650px;
+    margin: 16px 0;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.2;
+}
+
+.welcome-text {
+    max-width: 620px;
+    color: #deddd5;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.company-slogan {
+    margin-top: 22px;
+    color: #c6b77a;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Attendance link */
+
+.attendance-link {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+    padding: 15px 22px;
+    background: #c6b77a;
+    color: #20201d;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.attendance-link:hover {
+    background: #d8cb95;
+    transform: translateY(-3px);
+}
+
+/* Company information cards */
+
+.company-section {
+    padding: 28px 30px;
+    margin-bottom: 22px;
+    background: #ffffff;
+    border: 1px solid #e6e3d8;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(30, 30, 20, 0.04);
+    animation: fadeInUp 0.7s ease both;
+}
+
+.team-section {
+    animation-delay: 0.12s;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.section-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: #f0ecdc;
+    border-radius: 14px;
+    font-size: 25px;
+}
+
+.section-heading h2,
+.motivation-section h2,
+.contact-heading h2 {
+    margin: 0 0 7px;
+    color: #292923;
+    font-size: 22px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #898577;
+    font-size: 13px;
+}
+
+.company-section > p,
+.motivation-section p {
+    margin: 0;
+    color: #65645c;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* Motivational message */
+
+.motivation-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 28px 30px;
+    margin-bottom: 28px;
+    background: #eae4cf;
+    border-left: 5px solid #a89551;
+    border-radius: 14px;
+    animation: fadeInUp 0.7s ease both;
+    animation-delay: 0.2s;
+}
+
+.motivation-icon {
+    font-size: 30px;
+}
+
+/* Contact information */
+
+.contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e6e3d8;
+    border-radius: 18px;
+    animation: fadeInUp 0.7s ease both;
+    animation-delay: 0.25s;
+}
+
+.contact-heading {
+    grid-column: 1 / -1;
+}
+
+.contact-heading h2 {
+    margin-top: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: #f0ecdc;
+    border-radius: 13px;
+    font-size: 22px;
+}
+
+.contact-item h3 {
+    margin: 0 0 7px;
+    font-size: 15px;
+}
+
+.contact-item p,
+.contact-item a {
+    margin: 0;
+    color: #68665d;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+    color: #8b7837;
+}
+
+/* Footer */
+
+.dashboard-footer {
+    padding: 24px 6%;
+    background: #20201d;
+    color: #c9c7bd;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.dashboard-footer p {
+    margin: 5px 0;
+}
+
+/* Animations */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile layout */
+
+@media (max-width: 650px) {
+    .company-header {
+        padding: 16px 5%;
+    }
+
+    .company-logo {
+        font-size: 14px;
+    }
+
+    .header-label {
+        max-width: 100px;
+        text-align: right;
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+    .dashboard-main {
+        width: 92%;
+        padding: 25px 0;
+    }
+
+    .welcome-section {
+        padding: 35px 24px;
+        border-radius: 17px;
+    }
+
+    .welcome-section::after {
+        right: 0;
+        font-size: 200px;
+    }
+
+    .welcome-section h1 {
+        font-size: 31px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+    }
+
+    .attendance-link {
+        padding: 14px 15px;
+        font-size: 12px;
+    }
+
+    .company-section,
+    .motivation-section,
+    .contact-section {
+        padding: 23px 20px;
+    }
+
+    .section-heading h2,
+    .motivation-section h2,
+    .contact-heading h2 {
+        font-size: 19px;
+    }
+
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-heading {
+        grid-column: auto;
+    }
+}

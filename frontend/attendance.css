@@ -1,0 +1,219 @@
+
+.attendance-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #F2F2F2;
+    color: #171717;
+    font-family: Arial, sans-serif;
+}
+
+.attendance-header {
+    background: #171717;
+    color: #FFFFFF;
+    padding: 22px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.attendance-header h1 {
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 23px;
+}
+
+.attendance-header a {
+    color: #171717;
+    background: #C5A16A;
+    padding: 11px 16px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.attendance-main {
+    width: 90%;
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+.attendance-intro {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: attendWelcome 0.8s ease both;
+}
+
+.attendance-icon {
+    font-size: 42px;
+}
+
+.attendance-intro h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.attendance-intro p,
+.attendance-card > p,
+.history-link-card > p {
+    color: #666666;
+    line-height: 1.7;
+}
+
+.attendance-card,
+.history-link-card {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 1px solid #D9D9D9;
+    border-radius: 17px;
+    box-shadow: 0 8px 25px #0000000D;
+    animation: attendCard 0.8s ease both;
+}
+
+.attendance-card h2,
+.history-link-card h2 {
+    color: #292929;
+    margin-top: 0;
+}
+
+.leave-card {
+    background: #292929;
+    color: #FFFFFF;
+}
+
+.leave-card h2 {
+    color: #FFFFFF;
+}
+
+.leave-card > p {
+    color: #DDDDDD;
+}
+
+.leave-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.leave-input label {
+    font-weight: bold;
+}
+
+.leave-input input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #C5A16A;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+.attendance-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.attendance-page button {
+    flex: 1;
+    padding: 14px 18px;
+    background: #C5A16A;
+    color: #171717;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.attendance-page button:hover {
+    background: #D8B985;
+    transform: translateY(-2px);
+}
+
+#attendanceMessage,
+#leaveMessage {
+    min-height: 20px;
+}
+
+.leave-card #leaveMessage {
+    color: #C5A16A;
+}
+
+.history-button {
+    display: inline-block;
+    padding: 13px 18px;
+    background: #171717;
+    color: #FFFFFF;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.history-button:hover {
+    background: #444444;
+}
+
+.attendance-footer {
+    padding: 20px;
+    text-align: center;
+    color: #777777;
+    font-size: 13px;
+}
+
+@keyframes attendWelcome {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes attendCard {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .attendance-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .attendance-main {
+        width: 92%;
+    }
+
+    .attendance-card,
+    .history-link-card {
+        padding: 20px;
+    }
+
+    .attendance-actions {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .attendance-page *,
+    .attendance-page *::before,
+    .attendance-page *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,311 @@
+
+/* ===== Nexora Left Sidebar ===== */
+
+.sidebar {
+    width: 245px;
+    min-height: 100vh;
+    padding: 28px 18px;
+    box-sizing: border-box;
+    background: #20201d;
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+
+    border-right: 1px solid #3a3930;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 42px;
+    padding: 0 8px;
+}
+
+.sidebar-logo {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #c6b77a;
+    color: #20201d;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.sidebar-brand h2 {
+    margin: 0;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.sidebar-brand p {
+    margin: 5px 0 0;
+    color: #c6b77a;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.sidebar-label {
+    margin: 0 10px 14px;
+    color: #99978c;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 14px;
+
+    color: #d6d4cb;
+    text-decoration: none;
+    font-size: 14px;
+
+    border-radius: 10px;
+    border: 1px solid transparent;
+
+    transition: background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background: #33332c;
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.sidebar-link.active {
+    background: #c6b77a;
+    color: #20201d;
+    font-weight: bold;
+}
+
+.sidebar-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 18px 10px 0;
+    border-top: 1px solid #414037;
+    color: #aaa89d;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* Move the page content beside the sidebar */
+
+.dashboard-body .company-header,
+.dashboard-body .dashboard-main,
+.dashboard-body .dashboard-footer {
+    margin-left: 245px;
+}
+
+.dashboard-body .company-header {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.dashboard-body .dashboard-main {
+    width: auto;
+    max-width: 1080px;
+    margin-right: auto;
+    padding: 35px;
+}
+
+.dashboard-body .dashboard-footer {
+    padding: 20px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 800px) {
+    .sidebar {
+        width: 190px;
+        padding: 22px 12px;
+    }
+
+    .dashboard-body .company-header,
+    .dashboard-body .dashboard-main,
+    .dashboard-body .dashboard-footer {
+        margin-left: 190px;
+    }
+
+    .dashboard-body .dashboard-main {
+        padding: 22px 16px;
+    }
+
+    .sidebar-brand {
+        gap: 8px;
+        padding: 0 3px;
+    }
+
+    .sidebar-brand h2 {
+        font-size: 12px;
+    }
+
+    .sidebar-link {
+        gap: 8px;
+        padding: 12px 9px;
+        font-size: 12px;
+    }
+
+    .dashboard-body .contact-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .sidebar {
+        width: 68px;
+        padding: 18px 8px;
+        align-items: center;
+    }
+
+    .sidebar-brand {
+        padding: 0;
+        margin-bottom: 35px;
+    }
+
+    .sidebar-brand > div:last-child,
+    .sidebar-label,
+    .sidebar-link .sidebar-text,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .sidebar-nav {
+        width: 100%;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    .sidebar-icon {
+        font-size: 20px;
+    }
+
+    .dashboard-body .company-header,
+    .dashboard-body .dashboard-main,
+    .dashboard-body .dashboard-footer {
+        margin-left: 68px;
+    }
+
+    .dashboard-body .company-header {
+        padding: 15px 12px;
+    }
+
+    .dashboard-body .company-logo {
+        font-size: 11px;
+    }
+
+    .dashboard-body .header-label {
+        display: none;
+    }
+
+    .dashboard-body .dashboard-main {
+        padding: 18px 10px;
+    }
+
+    .dashboard-body .welcome-section {
+        padding: 25px 17px;
+    }
+
+    .dashboard-body .welcome-section h1 {
+        font-size: 25px;
+    }
+
+    .dashboard-body .attendance-link {
+        flex-wrap: wrap;
+        font-size: 11px;
+    }
+}
+
+/* ===== Sidebar Layout for Attendance and History ===== */
+
+/* Attendance page */
+
+.attendance-page .attendance-header,
+.attendance-page .attendance-main,
+.attendance-page .attendance-footer {
+    margin-left: 245px;
+}
+
+.attendance-page .attendance-header {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+/* History page */
+
+.history-page .history-header,
+.history-page .history-main,
+.history-page .history-footer {
+    margin-left: 245px;
+}
+
+/* Tablet */
+
+@media (max-width: 800px) {
+
+    .attendance-page .attendance-header,
+    .attendance-page .attendance-main,
+    .attendance-page .attendance-footer,
+    .history-page .history-header,
+    .history-page .history-main,
+    .history-page .history-footer {
+        margin-left: 190px;
+    }
+
+    .attendance-page .attendance-main,
+    .history-page .history-main {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+
+    .attendance-page .attendance-header,
+    .attendance-page .attendance-main,
+    .attendance-page .attendance-footer,
+    .history-page .history-header,
+    .history-page .history-main,
+    .history-page .history-footer {
+        margin-left: 68px;
+    }
+
+    .attendance-page .attendance-header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .attendance-page .attendance-main,
+    .history-page .history-main {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
