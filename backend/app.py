@@ -112,6 +112,8 @@ def login():
     })
 
 
+
+
 @app.route("/api/attendance/check-in", methods=["POST"])
 @jwt_required()
 def check_in():
@@ -133,14 +135,36 @@ def check_in():
 
         cursor = connection.execute(
             """
-            INSERT INTO attendance (user_id)
+            INSERT INTO attendance (user_id, check_in)
             VALUES (?, datetime('now', '+3 hours'))
             """,
             (user_id,),
         )
+
         record_id = cursor.lastrowid
 
         record = connection.execute(
+            "SELECT * FROM attendance WHERE id = ?",
+            (record_id,),
+        ).fetchone()
+
+    return jsonify({
+        "message": "Check-in successful.",
+        "record": dict(record),
+    }), 201
+
+
+    cursor = connection.execute(
+            """
+            INSERT INTO attendance (user_id, check_in)
+            VALUES (?, datetime('now', '+3 hours'))
+            """,
+            (user_id,),
+        )
+
+    record_id = cursor.lastrowid
+
+    record = connection.execute(
             "SELECT * FROM attendance WHERE id = ?",
             (record_id,),
         ).fetchone()
