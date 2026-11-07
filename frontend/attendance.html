@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Attendance Actions</title>
+    <title>Attendance Actions | Nexora Technologies</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="attendance.css">
@@ -13,66 +13,91 @@
 </head>
 
 <body class="attendance-page">
-    
-<aside class="sidebar">
-    <div class="sidebar-brand">
-        <span class="sidebar-logo">N</span>
 
-        <div>
-            <h2>NEXORA</h2>
-            <p>TECHNOLOGIES</p>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="sidebar-logo">N</span>
+
+            <div>
+                <h2>NEXORA</h2>
+                <p>TECHNOLOGIES</p>
+            </div>
         </div>
-    </div>
 
-    <p class="sidebar-label">MAIN MENU</p>
+        <p class="sidebar-label">MAIN MENU</p>
 
-    <nav class="sidebar-nav">
-        <a href="dashboard.html" class="sidebar-link">
-            <span class="sidebar-icon">⌂</span>
-            <span class="sidebar-text">Dashboard</span>
-        </a>
+        <nav class="sidebar-nav">
 
-        <a href="attendance.html" class="sidebar-link active">
-            <span class="sidebar-icon">◷</span>
-            <span class="sidebar-text">Attendance</span>
-        </a>
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-icon">⌂</span>
+                <span class="sidebar-text">Dashboard</span>
+            </a>
 
-        <a href="history.html" class="sidebar-link">
-            <span class="sidebar-icon">▤</span>
-            <span class="sidebar-text">Attendance History</span>
-        </a>
+            <a href="attendance.html" class="sidebar-link active">
+                <span class="sidebar-icon">◷</span>
+                <span class="sidebar-text">Attendance</span>
+            </a>
 
-        <a href="dashboard.html#contact" class="sidebar-link">
-            <span class="sidebar-icon">✉</span>
-            <span class="sidebar-text">Contact Us</span>
-        </a>
-    </nav>
+            <a href="history.html" class="sidebar-link">
+                <span class="sidebar-icon">▤</span>
+                <span class="sidebar-text">Attendance History</span>
+            </a>
 
-    <div class="sidebar-footer">
-        <p>💛 Innovate Today.</p>
-        <p>Shape Tomorrow.</p>
-    </div>
-</aside>
+            <a href="dashboard.html#contact" class="sidebar-link">
+                <span class="sidebar-icon">✉</span>
+                <span class="sidebar-text">Contact Us</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>💛 Innovate Today.</p>
+            <p>Shape Tomorrow.</p>
+        </div>
+
+    </aside>
 
 
+    <!-- Header -->
     <header class="attendance-header">
+
         <h1>⏰ Employee Attendance</h1>
+
         <a href="dashboard.html">← Dashboard</a>
+
     </header>
 
+
+    <!-- Main Content -->
     <main class="attendance-main">
 
+        <!-- Introduction -->
         <section class="attendance-intro">
+
             <div class="attendance-icon">👋</div>
+
             <h2>Manage Your Workday</h2>
-            <p>Record your arrival, departure and temporary leave.</p>
+
+            <p>
+                Record your arrival, departure and temporary leave.
+            </p>
+
         </section>
 
+
+        <!-- Daily Attendance -->
         <section class="attendance-card">
+
             <h2>🕒 Daily Attendance</h2>
-            <p>Use the buttons to record your working hours.</p>
+
+            <p>
+                Use the buttons to record your working hours.
+            </p>
 
             <div class="attendance-actions">
+
                 <button type="button" id="checkInBtn">
                     🟡 Check In
                 </button>
@@ -80,16 +105,23 @@
                 <button type="button" id="checkOutBtn">
                     🚪 Check Out
                 </button>
+
             </div>
 
             <p id="attendanceMessage" role="status"></p>
+
         </section>
 
+
+        <!-- Temporary Leave -->
         <section class="attendance-card leave-card">
+
             <h2>☕ Temporary Leave</h2>
+
             <p>Enter your expected return time.</p>
 
             <div class="leave-input">
+
                 <label for="expectedReturnTime">
                     Expected Return Time
                 </label>
@@ -99,9 +131,11 @@
                     id="expectedReturnTime"
                     required
                 >
+
             </div>
 
             <div class="attendance-actions">
+
                 <button type="button" id="leaveWorkBtn">
                     🚶 Leave Work
                 </button>
@@ -109,26 +143,68 @@
                 <button type="button" id="returnWorkBtn">
                     🏢 Return to Work
                 </button>
+
             </div>
 
             <p id="leaveMessage" role="status"></p>
+
         </section>
 
+
+        <!-- Attendance History -->
         <section class="history-link-card">
+
             <h2>📋 Attendance History</h2>
-            <p>View your recorded attendance details on a separate page.</p>
+
+            <p>
+                View your recorded attendance details on a separate page.
+            </p>
 
             <a href="history.html" class="history-button">
                 View Attendance History →
             </a>
+
         </section>
+
+
+        <!-- AI Attendance Summary -->
+        <section class="attendance-card ai-card">
+
+            <h2>🤖 AI Attendance Summary</h2>
+
+            <p>
+                Let AI analyze your attendance records
+                and generate a smart attendance report.
+            </p>
+
+            <div class="attendance-actions">
+
+                <button type="button" id="aiSummaryBtn">
+                    ✨ Generate AI Summary
+                </button>
+
+            </div>
+
+            <div id="aiSummaryResult" role="status" aria-live="polite">
+                Your AI attendance report will appear here.
+            </div>
+
+        </section>
+
 
     </main>
 
+
+    <!-- Footer -->
     <footer class="attendance-footer">
+
         Employee Attendance System © 2026
+
     </footer>
 
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>

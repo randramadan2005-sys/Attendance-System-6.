@@ -1,11 +1,21 @@
 
+/* =====================================
+   NEXORA TECHNOLOGIES
+   LOGIN + ATTENDANCE + HISTORY + AI
+   ===================================== */
 
-/* Login Form - Backend API */
+const API_URL = "http://127.0.0.1:5000";
+
+/* =====================================
+   1. LOGIN
+   ===================================== */
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
+
     loginForm.addEventListener("submit", async function (event) {
+
         event.preventDefault();
 
         const email = document.getElementById("email").value.trim();
@@ -23,59 +33,58 @@ if (loginForm) {
         message.style.color = "#B59A52";
 
         try {
-            const response = await fetch(
-                "http://127.0.0.1:5000/api/login",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password
-                    })
-                }
-            );
+
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
 
             const data = await response.json();
 
             if (!response.ok) {
                 message.textContent =
-                    data.message || "Login failed. Please try again.";
+                    data.message || "Login failed.";
                 message.style.color = "#D9534F";
                 return;
             }
 
-            // Save login information
             localStorage.setItem("employeeEmail", data.user.email);
             localStorage.setItem("accessToken", data.access_token);
             localStorage.setItem("employeeName", data.user.name);
 
-            message.textContent = "Login successful! Opening Dashboard...";
+            message.textContent = "Login successful!";
             message.style.color = "#B59A52";
 
             window.location.href = "dashboard.html";
 
         } catch (error) {
+
             console.error("Login error:", error);
 
             message.textContent =
                 "Cannot connect to the backend. Make sure Flask is running.";
+
             message.style.color = "#D9534F";
         }
     });
 }
 
 
-
-/* Attendance System
-   Shared by Attendance and History pages */
+/* =====================================
+   2. SHARED ELEMENTS
+   ===================================== */
 
 const checkInBtn = document.getElementById("checkInBtn");
 const checkOutBtn = document.getElementById("checkOutBtn");
 
-const recordsTable = document.getElementById("recordsTable");
-const attendanceMessage = document.getElementById("attendanceMessage");
+const attendanceMessage =
+    document.getElementById("attendanceMessage");
 
 const leaveWorkBtn = document.getElementById("leaveWorkBtn");
 const returnWorkBtn = document.getElementById("returnWorkBtn");
@@ -85,39 +94,52 @@ const expectedReturnInput =
 
 const leaveMessage = document.getElementById("leaveMessage");
 
-const email = localStorage.getItem("employeeEmail");
+const recordsTable = document.getElementById("recordsTable");
 
-let records = [];
+const aiSummaryBtn = document.getElementById("aiSummaryBtn");
+const aiSummaryResult = document.getElementById("aiSummaryResult");
 
-try {
-    records = JSON.parse(
-        localStorage.getItem("attendanceRecords") || "[]"
-    );
 
-    if (!Array.isArray(records)) {
-        records = [];
-    }
-} catch (error) {
-    records = [];
+/* =====================================
+   3. HELPER FUNCTIONS
+   ===================================== */
+
+function getToken() {
+    return localStorage.getItem("accessToken");
 }
 
+function showHistoryMessage(message) {
 
-/* Current date */
+    if (!recordsTable) return;
 
-function today() {
-    const now = new Date();
+    recordsTable.replaceChildren();
 
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
 
-    return `${year}-${month}-${day}`;
+    cell.colSpan = 6;
+    cell.textContent = message;
+
+    row.appendChild(cell);
+    recordsTable.appendChild(row);
 }
 
+function formatDate(value) {
 
-/* Current time */
+    if (!value) return "--";
+
+    return value.split(" ")[0];
+}
+
+function formatTime(value) {
+
+    if (!value) return "--";
+
+    return value.split(" ")[1] || value;
+}
 
 function currentTime() {
+
     return new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -126,63 +148,27 @@ function currentTime() {
 }
 
 
-/* Save records without deleting existing data */
-
-function saveRecords() {
-    localStorage.setItem(
-        "attendanceRecords",
-        JSON.stringify(records)
-    );
-}
-
-
-/* Find today's attendance record for this employee */
-
-function getTodayRecord() {
-    return records.find(record =>
-        record.email === email &&
-        record.date === today()
-    );
-}
-
-
-/* Display attendance history on history.html */
-
-
-/* =========================
-   Load Attendance History
-   From Backend API
-   ========================= */
+/* =====================================
+   4. LOAD ATTENDANCE HISTORY
+   ===================================== */
 
 async function renderRecords() {
-    if (!recordsTable) {
-        return;
-    }
 
-    recordsTable.replaceChildren();
+    if (!recordsTable) return;
 
-    const token = localStorage.getItem("accessToken");
+    const token = getToken();
 
     if (!token) {
         showHistoryMessage("Please log in to view attendance history.");
         return;
     }
 
-    // Format date
-    const formatDate = value => {
-        if (!value) return "--";
-        return value.split(" ")[0];
-    };
-
-    // Format time
-    const formatTime = value => {
-        if (!value) return "--";
-        return value.split(" ")[1] || value;
-    };
+    showHistoryMessage("Loading attendance records...");
 
     try {
+
         const response = await fetch(
-            "http://127.0.0.1:5000/api/attendance",
+            `${API_URL}/api/attendance`,
             {
                 method: "GET",
                 headers: {
@@ -194,24 +180,32 @@ async function renderRecords() {
         const data = await response.json();
 
         if (!response.ok) {
+
             showHistoryMessage(
                 data.message || "Could not load attendance history."
             );
+
             return;
         }
 
         const employeeRecords = data.records || [];
 
+        recordsTable.replaceChildren();
+
         if (employeeRecords.length === 0) {
+
             showHistoryMessage("No attendance records yet.");
+
             return;
         }
 
         employeeRecords.forEach(record => {
+
             const breaks = record.breaks || [];
 
-            // If there are no breaks, display one row
+            // Display one row if there are no temporary leaves
             if (breaks.length === 0) {
+
                 const row = document.createElement("tr");
 
                 const values = [
@@ -224,17 +218,22 @@ async function renderRecords() {
                 ];
 
                 values.forEach(value => {
+
                     const cell = document.createElement("td");
+
                     cell.textContent = value;
+
                     row.appendChild(cell);
                 });
 
                 recordsTable.appendChild(row);
+
                 return;
             }
 
-            // Display a row for each temporary leave
+            // Display each temporary leave separately
             breaks.forEach(breakRecord => {
+
                 const row = document.createElement("tr");
 
                 const values = [
@@ -247,42 +246,58 @@ async function renderRecords() {
                 ];
 
                 values.forEach(value => {
+
                     const cell = document.createElement("td");
+
                     cell.textContent = value;
+
                     row.appendChild(cell);
                 });
 
                 recordsTable.appendChild(row);
             });
+
         });
 
     } catch (error) {
+
         console.error("History error:", error);
+
         showHistoryMessage("Cannot connect to the backend.");
     }
 }
 
 
-
-/* Check In */
-
-
-/* Check In - Backend API */
+/* =====================================
+   5. CHECK IN
+   ===================================== */
 
 if (checkInBtn) {
+
+    let checkInProcessing = false;
+
     checkInBtn.addEventListener("click", async function () {
-        const token = localStorage.getItem("accessToken");
+
+        if (checkInProcessing) return;
+
+        const token = getToken();
 
         if (!token) {
+
             attendanceMessage.textContent = "Please log in first.";
+
             return;
         }
+
+        checkInProcessing = true;
+        checkInBtn.disabled = true;
 
         attendanceMessage.textContent = "Recording check-in...";
 
         try {
+
             const response = await fetch(
-                "http://127.0.0.1:5000/api/attendance/check-in",
+                `${API_URL}/api/attendance/check-in`,
                 {
                     method: "POST",
                     headers: {
@@ -295,41 +310,63 @@ if (checkInBtn) {
             const data = await response.json();
 
             if (!response.ok) {
+
                 attendanceMessage.textContent =
                     data.message || "Check-in failed.";
+
                 return;
             }
 
             attendanceMessage.textContent =
-                "Check-in recorded successfully!";
+                data.message || "Check-in recorded successfully!";
+
         } catch (error) {
+
             console.error("Check-in error:", error);
+
             attendanceMessage.textContent =
                 "Cannot connect to the backend.";
+
+        } finally {
+
+            checkInProcessing = false;
+            checkInBtn.disabled = false;
         }
+
     });
 }
 
 
-/*Check Out */
-
-
-/* Check Out - Backend API */
+/* =====================================
+   6. CHECK OUT
+   ===================================== */
 
 if (checkOutBtn) {
+
+    let checkOutProcessing = false;
+
     checkOutBtn.addEventListener("click", async function () {
-        const token = localStorage.getItem("accessToken");
+
+        if (checkOutProcessing) return;
+
+        const token = getToken();
 
         if (!token) {
+
             attendanceMessage.textContent = "Please log in first.";
+
             return;
         }
+
+        checkOutProcessing = true;
+        checkOutBtn.disabled = true;
 
         attendanceMessage.textContent = "Recording check-out...";
 
         try {
+
             const response = await fetch(
-                "http://127.0.0.1:5000/api/attendance/check-out",
+                `${API_URL}/api/attendance/check-out`,
                 {
                     method: "POST",
                     headers: {
@@ -342,58 +379,86 @@ if (checkOutBtn) {
             const data = await response.json();
 
             if (!response.ok) {
+
                 attendanceMessage.textContent =
                     data.message || "Check-out failed.";
+
                 return;
             }
 
             attendanceMessage.textContent =
-                "Check-out recorded successfully!";
+                data.message || "Check-out recorded successfully!";
+
         } catch (error) {
+
             console.error("Check-out error:", error);
+
             attendanceMessage.textContent =
                 "Cannot connect to the backend.";
+
+        } finally {
+
+            checkOutProcessing = false;
+            checkOutBtn.disabled = false;
         }
+
     });
 }
 
 
-
-/* Temporary Leave */
-
+/* =====================================
+   7. TEMPORARY LEAVE
+   ===================================== */
 
 if (leaveWorkBtn) {
+
+    let leaveProcessing = false;
+
     leaveWorkBtn.addEventListener("click", async function () {
-        const token = localStorage.getItem("accessToken");
+
+        if (leaveProcessing) return;
+
+        const token = getToken();
+
         const expectedReturn = expectedReturnInput?.value || "";
 
         if (!token) {
+
             leaveMessage.textContent = "Please log in first.";
+
             return;
         }
 
         if (!expectedReturn) {
+
             leaveMessage.textContent =
                 "Please select your expected return time.";
+
             return;
         }
 
         if (expectedReturn <= currentTime()) {
+
             leaveMessage.textContent =
                 "Return time must be later than now.";
+
             return;
         }
+
+        leaveProcessing = true;
+        leaveWorkBtn.disabled = true;
 
         leaveMessage.textContent = "Recording temporary leave...";
 
         try {
+
             const response = await fetch(
-                "http://127.0.0.1:5000/api/attendance/leave",
+                `${API_URL}/api/attendance/leave`,
                 {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
                         expected_return: expectedReturn
@@ -404,43 +469,65 @@ if (leaveWorkBtn) {
             const data = await response.json();
 
             if (!response.ok) {
+
                 leaveMessage.textContent =
                     data.message || "Could not record leave.";
+
                 return;
             }
 
-            leaveMessage.textContent = data.message;
+            leaveMessage.textContent =
+                data.message || "Temporary leave recorded successfully!";
 
-            if (expectedReturnInput) {
-                expectedReturnInput.value = "";
-            }
+            expectedReturnInput.value = "";
 
-            renderRecords();
         } catch (error) {
+
             console.error("Leave error:", error);
+
             leaveMessage.textContent =
                 "Cannot connect to the backend.";
+
+        } finally {
+
+            leaveProcessing = false;
+            leaveWorkBtn.disabled = false;
         }
+
     });
 }
 
 
-/* Return to Work - Backend */
+/* =====================================
+   8. RETURN TO WORK
+   ===================================== */
 
 if (returnWorkBtn) {
+
+    let returnProcessing = false;
+
     returnWorkBtn.addEventListener("click", async function () {
-        const token = localStorage.getItem("accessToken");
+
+        if (returnProcessing) return;
+
+        const token = getToken();
 
         if (!token) {
+
             leaveMessage.textContent = "Please log in first.";
+
             return;
         }
+
+        returnProcessing = true;
+        returnWorkBtn.disabled = true;
 
         leaveMessage.textContent = "Recording return to work...";
 
         try {
+
             const response = await fetch(
-                "http://127.0.0.1:5000/api/attendance/return",
+                `${API_URL}/api/attendance/return`,
                 {
                     method: "POST",
                     headers: {
@@ -452,22 +539,110 @@ if (returnWorkBtn) {
             const data = await response.json();
 
             if (!response.ok) {
+
                 leaveMessage.textContent =
                     data.message || "Could not record return.";
+
                 return;
             }
 
-            leaveMessage.textContent = data.message;
-            renderRecords();
+            leaveMessage.textContent =
+                data.message || "Return to work recorded successfully!";
+
         } catch (error) {
+
             console.error("Return error:", error);
+
             leaveMessage.textContent =
                 "Cannot connect to the backend.";
+
+        } finally {
+
+            returnProcessing = false;
+            returnWorkBtn.disabled = false;
         }
+
     });
 }
 
 
-/* Display records only when a history table exists */
+/* =====================================
+   9. AI ATTENDANCE SUMMARY
+   ===================================== */
+
+if (aiSummaryBtn && aiSummaryResult) {
+
+    let aiProcessing = false;
+
+    aiSummaryBtn.addEventListener("click", async function () {
+
+        if (aiProcessing) return;
+
+        const token = getToken();
+
+        if (!token) {
+
+            aiSummaryResult.textContent = "Please log in first.";
+
+            return;
+        }
+
+        aiProcessing = true;
+        aiSummaryBtn.disabled = true;
+
+        aiSummaryBtn.textContent = "Generating summary...";
+
+        aiSummaryResult.textContent =
+            "AI is analyzing your attendance records...";
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/api/ai/attendance-summary`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+
+                aiSummaryResult.textContent =
+                    data.error || data.message || "Could not generate AI summary.";
+
+                return;
+            }
+
+            aiSummaryResult.textContent =
+                data.summary || "No summary was returned.";
+
+        } catch (error) {
+
+            console.error("AI Summary Error:", error);
+
+            aiSummaryResult.textContent =
+                "Cannot connect to the backend. Please try again.";
+
+        } finally {
+
+            aiProcessing = false;
+            aiSummaryBtn.disabled = false;
+
+            aiSummaryBtn.textContent =
+                "✨ Generate AI Attendance Summary";
+        }
+
+    });
+}
+
+
+/* =====================================
+   10. INITIALIZE HISTORY PAGE
+   ===================================== */
 
 renderRecords();
