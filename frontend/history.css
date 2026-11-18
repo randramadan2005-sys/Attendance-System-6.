@@ -1,4 +1,16 @@
 
+/*  History Page - General Styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: var(--light-gray);
+    color: var(--dark-gray);
+}
+
 .history-page {
     margin: 0;
     min-height: 100vh;
@@ -6,6 +18,8 @@
     color: #171717;
     font-family: Arial, sans-serif;
 }
+
+/* Header */
 
 .history-header {
     background: #171717;
@@ -32,6 +46,8 @@
     font-weight: bold;
 }
 
+/* Main Content */
+
 .history-main {
     width: 92%;
     max-width: 1200px;
@@ -53,6 +69,8 @@
     line-height: 1.7;
 }
 
+/* History Card*/
+
 .history-card {
     padding: 25px;
     background: #FFFFFF;
@@ -61,6 +79,8 @@
     box-shadow: 0 8px 25px #0000000D;
     animation: historyCard 0.8s ease both;
 }
+
+/* History Table */
 
 .table-wrapper {
     width: 100%;
@@ -95,11 +115,14 @@
     background: #F3F1ED;
 }
 
+/*  Animations */
+
 @keyframes historyWelcome {
     from {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -111,11 +134,14 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
+/* Responsive Design */
 
 @media (max-width: 600px) {
     .history-header {
@@ -125,5 +151,18 @@
 
     .history-card {
         padding: 12px;
+    }
+
+    .history-intro h2 {
+        font-size: 24px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .history-intro,
+    .history-card {
+        animation: none;
     }
 }

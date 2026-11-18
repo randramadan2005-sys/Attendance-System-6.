@@ -19,7 +19,7 @@
     <aside class="sidebar">
 
         <div class="sidebar-brand">
-            <span class="sidebar-logo">N</span>
+            <span class="sidebar-logo" aria-hidden="true">N</span>
 
             <div>
                 <h2>NEXORA</h2>
@@ -32,22 +32,33 @@
         <nav class="sidebar-nav">
 
             <a href="dashboard.html" class="sidebar-link active">
-                <span class="sidebar-icon">⌂</span>
+                <span class="sidebar-icon" aria-hidden="true">⌂</span>
                 <span class="sidebar-text">Dashboard</span>
             </a>
 
             <a href="attendance.html" class="sidebar-link">
-                <span class="sidebar-icon">◷</span>
+                <span class="sidebar-icon" aria-hidden="true">◷</span>
                 <span class="sidebar-text">Attendance</span>
             </a>
 
             <a href="history.html" class="sidebar-link">
-                <span class="sidebar-icon">▤</span>
+                <span class="sidebar-icon" aria-hidden="true">▤</span>
                 <span class="sidebar-text">Attendance History</span>
             </a>
 
-            <a href="dashboard.html#contact" class="sidebar-link">
-                <span class="sidebar-icon">✉</span>
+            <a href="employees.html" class="sidebar-link">
+                <span class="sidebar-icon" aria-hidden="true">♙</span>
+                <span class="sidebar-text">Employees</span>
+            </a>
+
+            <!-- Projects -->
+            <a href="projects.html" class="sidebar-link">
+                <span class="sidebar-icon" aria-hidden="true">▣</span>
+                <span class="sidebar-text">Projects</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-link">
+                <span class="sidebar-icon" aria-hidden="true">✉</span>
                 <span class="sidebar-text">Contact Us</span>
             </a>
 
@@ -58,21 +69,31 @@
             <p>Shape Tomorrow.</p>
         </div>
 
-    </aside>
+        <!-- Logout -->
+        <div class="sidebar-logout">
+            <button type="button" id="logoutBtn" class="logout-btn">
+                <span aria-hidden="true">↪</span>
+                <span>Logout</span>
+            </button>
+        </div>
 
+    </aside>
 
     <!-- Header -->
     <header class="company-header">
 
         <a href="dashboard.html" class="company-logo">
-            <span class="logo-icon">N</span>
-            <span>NEXORA <small>TECHNOLOGIES</small></span>
+            <span class="logo-icon" aria-hidden="true">N</span>
+
+            <span>
+                NEXORA
+                <small>TECHNOLOGIES</small>
+            </span>
         </a>
 
         <span class="header-label">EMPLOYEE PORTAL</span>
 
     </header>
-
 
     <!-- Main Content -->
     <main class="dashboard-main">
@@ -82,7 +103,7 @@
 
             <p class="eyebrow">WELCOME TO NEXORA</p>
 
-            <h1>Welcome to Our Team 👋</h1>
+            <h1 id="welcomeHeading">Welcome to Our Team 👋</h1>
 
             <p class="welcome-text">
                 We're glad to have you here. Together, we create a better
@@ -94,19 +115,19 @@
             </p>
 
             <a href="attendance.html" class="attendance-link">
-                📋 Go to Attendance Records
+                <span aria-hidden="true">📋</span>
+                Go to Attendance Records
                 <span aria-hidden="true">→</span>
             </a>
 
         </section>
-
 
         <!-- About Company -->
         <section class="company-section">
 
             <div class="section-heading">
 
-                <span class="section-icon">🏢</span>
+                <span class="section-icon" aria-hidden="true">🏢</span>
 
                 <div>
                     <h2>About Our Company</h2>
@@ -123,13 +144,12 @@
 
         </section>
 
-
         <!-- Team Section -->
         <section class="company-section team-section">
 
             <div class="section-heading">
 
-                <span class="section-icon">🤝</span>
+                <span class="section-icon" aria-hidden="true">🤝</span>
 
                 <div>
                     <h2>Our Team, Our Strength</h2>
@@ -146,11 +166,10 @@
 
         </section>
 
-
         <!-- Motivation Section -->
         <section class="motivation-section">
 
-            <span class="motivation-icon">✨</span>
+            <span class="motivation-icon" aria-hidden="true">✨</span>
 
             <div>
                 <h2>A Message to You</h2>
@@ -164,44 +183,7 @@
 
         </section>
 
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-
-            <div class="contact-heading">
-
-                <p class="eyebrow">GET IN TOUCH</p>
-
-                <h2>Contact Information</h2>
-
-            </div>
-
-            <div class="contact-item">
-
-                <span class="contact-icon">📍</span>
-
-                <div>
-                    <h3>Our Location</h3>
-                    <p>Um Al Summaq, Amman, Jordan</p>
-                </div>
-
-            </div>
-
-            <div class="contact-item">
-
-                <span class="contact-icon">☎️</span>
-
-                <div>
-                    <h3>Phone Number</h3>
-                    <a href="tel:0792406044">0792406044</a>
-                </div>
-
-            </div>
-
-        </section>
-
     </main>
-
 
     <!-- Footer -->
     <footer class="dashboard-footer">
@@ -211,6 +193,9 @@
         <p>Built with 💛 and technology.</p>
 
     </footer>
+
+    <!-- Dashboard JavaScript -->
+    <script src="dashboard.js"></script>
 
 </body>
 </html>

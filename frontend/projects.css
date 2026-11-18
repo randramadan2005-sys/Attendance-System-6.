@@ -1,0 +1,367 @@
+
+/* ========================================
+   Nexora Technologies - Projects Page
+======================================== */
+
+/* General Styles */
+
+.projects-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: #f5f4f0;
+    color: #25251f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.projects-body *,
+.projects-body *::before,
+.projects-body *::after {
+    box-sizing: border-box;
+}
+
+/* Main Content */
+
+.projects-main {
+    margin-left: 245px;
+    min-height: 100vh;
+    padding: 50px 45px;
+}
+
+/* Header */
+
+.projects-header {
+    margin-bottom: 35px;
+}
+
+.projects-eyebrow {
+    color: #a18c53;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0 0 12px;
+}
+
+.projects-header h1 {
+    font-size: 38px;
+    margin: 0 0 12px;
+    color: #25251f;
+}
+
+.projects-description {
+    color: #77776f;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Statistics */
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 55px;
+}
+
+.project-stat-card {
+    background: #20201d;
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-stat-card span {
+    color: #d1c7a7;
+    font-size: 13px;
+}
+
+.project-stat-card strong {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Project Sections */
+
+.projects-section {
+    margin-bottom: 55px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    margin: 0;
+    color: #25251f;
+}
+
+.project-section-count {
+    background: #e8e3d4;
+    color: #75643b;
+    padding: 9px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.in-progress-count {
+    background: #f3e9d2;
+    color: #98752e;
+}
+
+/* Projects Grid */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* Project Cards */
+
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #eeede8;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.035);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.project-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.project-number {
+    color: #a18c53;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.project-status {
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.project-status.completed {
+    background: #e7f1e8;
+    color: #477b4d;
+}
+
+.project-status.in-progress {
+    background: #f5eddc;
+    color: #98752e;
+}
+
+/* Project Icon */
+
+.project-icon {
+    width: 52px;
+    height: 52px;
+    background: #f5f3ec;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+/* Project Information */
+
+.project-card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+    color: #25251f;
+    margin: 0 0 12px;
+}
+
+.project-card > p {
+    color: #77776f;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0 0 20px;
+    min-height: 70px;
+}
+
+/* Project Tags */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.project-tags span {
+    background: #f4f3ef;
+    color: #68685f;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+/* Project Card Footer */
+
+.project-card-footer {
+    border-top: 1px solid #eeeeea;
+    padding-top: 17px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-card-footer span {
+    color: #888880;
+    font-size: 12px;
+}
+
+.project-card-footer strong {
+    color: #477b4d;
+    font-size: 12px;
+}
+
+.ongoing-card .project-card-footer strong {
+    color: #98752e;
+}
+
+/* Progress */
+
+.project-progress {
+    margin-bottom: 22px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-info span {
+    color: #77776f;
+    font-size: 12px;
+}
+
+.progress-info strong {
+    color: #98752e;
+    font-size: 13px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: #eeeae0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 65%;
+    height: 100%;
+    background: #b49a5a;
+    border-radius: 10px;
+}
+
+/* Footer */
+
+.projects-footer {
+    border-top: 1px solid #e5e3dc;
+    padding-top: 22px;
+    margin-top: 35px;
+    text-align: center;
+}
+
+.projects-footer p {
+    color: #999990;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+    .projects-main {
+        margin-left: 190px;
+        padding: 35px 25px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-stats {
+        gap: 12px;
+    }
+
+    .project-stat-card {
+        padding: 20px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+    .projects-main {
+        margin-left: 68px;
+        padding: 25px 14px;
+    }
+
+    .projects-header h1 {
+        font-size: 28px;
+    }
+
+    .projects-description {
+        font-size: 13px;
+    }
+
+    .project-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .project-stat-card {
+        padding: 18px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-card h3 {
+        font-size: 17px;
+    }
+}

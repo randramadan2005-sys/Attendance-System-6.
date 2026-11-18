@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Attendance History</title>
+    <title>Nexora Technologies | Attendance History</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="history.css">
@@ -13,63 +14,95 @@
 </head>
 
 <body class="history-page">
-    
-<aside class="sidebar">
-    <div class="sidebar-brand">
-        <span class="sidebar-logo">N</span>
 
-        <div>
-            <h2>NEXORA</h2>
-            <p>TECHNOLOGIES</p>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="sidebar-logo" aria-hidden="true">N</span>
+
+            <div>
+                <h2>NEXORA</h2>
+                <p>TECHNOLOGIES</p>
+            </div>
         </div>
-    </div>
 
-    <p class="sidebar-label">MAIN MENU</p>
+        <p class="sidebar-label">MAIN MENU</p>
 
-    <nav class="sidebar-nav">
-        <a href="dashboard.html" class="sidebar-link">
-            <span class="sidebar-icon">⌂</span>
-            <span class="sidebar-text">Dashboard</span>
-        </a>
+        <nav class="sidebar-nav">
 
-        <a href="attendance.html" class="sidebar-link">
-            <span class="sidebar-icon">◷</span>
-            <span class="sidebar-text">Attendance</span>
-        </a>
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-icon">⌂</span>
+                <span class="sidebar-text">Dashboard</span>
+            </a>
 
-        <a href="history.html" class="sidebar-link active">
-            <span class="sidebar-icon">▤</span>
-            <span class="sidebar-text">Attendance History</span>
-        </a>
+            <a href="attendance.html" class="sidebar-link">
+                <span class="sidebar-icon">◷</span>
+                <span class="sidebar-text">Attendance</span>
+            </a>
 
-        <a href="dashboard.html#contact" class="sidebar-link">
-            <span class="sidebar-icon">✉</span>
-            <span class="sidebar-text">Contact Us</span>
-        </a>
-    </nav>
+            <a href="history.html" class="sidebar-link active">
+                <span class="sidebar-icon">▤</span>
+                <span class="sidebar-text">Attendance History</span>
+            </a>
 
-    <div class="sidebar-footer">
-        <p>💛 Innovate Today.</p>
-        <p>Shape Tomorrow.</p>
-    </div>
-</aside>
+            <a href="employees.html" class="sidebar-link">
+                <span class="sidebar-icon">♙</span>
+                <span class="sidebar-text">Employees</span>
+            </a>
+
+            <!-- Projects -->
+            <a href="projects.html" class="sidebar-link">
+                <span class="sidebar-icon">▣</span>
+                <span class="sidebar-text">Projects</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-link">
+                <span class="sidebar-icon">✉</span>
+                <span class="sidebar-text">Contact Us</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>💛 Innovate Today.</p>
+            <p>Shape Tomorrow.</p>
+        </div>
+
+    </aside>
 
 
+    <!-- Header -->
     <header class="history-header">
+
         <h1>📋 Attendance History</h1>
+
         <a href="attendance.html">← Back to Attendance</a>
+
     </header>
 
+
+    <!-- Main Content -->
     <main class="history-main">
 
         <section class="history-intro">
+
             <h2>Workday Records 📊</h2>
-            <p>Review your recorded arrival, leave and departure times.</p>
+
+            <p>
+                Review your recorded arrival, leave and departure times.
+            </p>
+
         </section>
 
+
+        <!-- Attendance Records Table -->
         <section class="history-card">
+
             <div class="table-wrapper">
+
                 <table>
+
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -83,12 +116,18 @@
 
                     <tbody id="recordsTable">
                     </tbody>
+
                 </table>
+
             </div>
+
         </section>
 
     </main>
 
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>

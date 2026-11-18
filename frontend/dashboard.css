@@ -1,12 +1,24 @@
 
-/* ===== Nexora Dashboard ===== */
+/* ========================================
+   NEXORA DASHBOARD
+======================================== */
+
+/* General Styles */
 
 .dashboard-body {
     margin: 0;
+    padding: 0;
     min-height: 100vh;
-    background: #f5f4f0;
-    color: #25251f;
+    box-sizing: border-box;
+    background: var(--light-gray, #f5f4f0);
+    color: var(--dark-gray, #25251f);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.dashboard-body *,
+.dashboard-body *::before,
+.dashboard-body *::after {
+    box-sizing: border-box;
 }
 
 /* Header */
@@ -14,13 +26,12 @@
 .company-header {
     min-height: 76px;
     padding: 0 7%;
-    background: #20201d;
+    background: var(--dark-gray, #20201d);
     color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    box-sizing: border-box;
 }
 
 .company-logo {
@@ -39,7 +50,7 @@
     height: 42px;
     display: grid;
     place-items: center;
-    background: #c6b77a;
+    background: var(--gold, #c6b77a);
     color: #20201d;
     border-radius: 12px;
     font-size: 24px;
@@ -48,7 +59,7 @@
 .company-logo small {
     display: block;
     margin-top: 4px;
-    color: #c6b77a;
+    color: var(--gold, #c6b77a);
     font-size: 9px;
     letter-spacing: 2px;
 }
@@ -59,15 +70,22 @@
     letter-spacing: 2px;
 }
 
-/* Main layout */
+/* Main Layout - Centered beside Sidebar */
 
 .dashboard-main {
-    width: min(1080px, 88%);
-    margin: 0 auto;
-    padding: 45px 0;
+    width: calc(100% - 245px);
+    margin-left: 245px;
+    padding: 45px 40px;
 }
 
-/* Welcome section */
+.dashboard-main > * {
+    width: 100%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Welcome Section */
 
 .welcome-section {
     position: relative;
@@ -92,13 +110,15 @@
 }
 
 .eyebrow {
-    color: #c6b77a;
+    color: var(--gold, #c6b77a);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2.5px;
 }
 
 .welcome-section h1 {
+    position: relative;
+    z-index: 1;
     max-width: 650px;
     margin: 16px 0;
     font-size: clamp(30px, 5vw, 48px);
@@ -106,6 +126,8 @@
 }
 
 .welcome-text {
+    position: relative;
+    z-index: 1;
     max-width: 620px;
     color: #deddd5;
     font-size: 16px;
@@ -114,13 +136,13 @@
 
 .company-slogan {
     margin-top: 22px;
-    color: #c6b77a;
+    color: var(--gold, #c6b77a);
     font-size: 17px;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
-/* Attendance link */
+/* Attendance Link */
 
 .attendance-link {
     position: relative;
@@ -131,7 +153,7 @@
     gap: 12px;
     margin-top: 22px;
     padding: 15px 22px;
-    background: #c6b77a;
+    background: var(--gold, #c6b77a);
     color: #20201d;
     border-radius: 10px;
     text-decoration: none;
@@ -145,7 +167,7 @@
     transform: translateY(-3px);
 }
 
-/* Company information cards */
+/* Company Information Cards */
 
 .company-section {
     padding: 28px 30px;
@@ -201,7 +223,7 @@
     line-height: 1.9;
 }
 
-/* Motivational message */
+/* Motivational Section */
 
 .motivation-section {
     display: flex;
@@ -220,7 +242,7 @@
     font-size: 30px;
 }
 
-/* Contact information */
+/* Contact Information */
 
 .contact-section {
     display: grid;
@@ -307,7 +329,15 @@
     }
 }
 
-/* Mobile layout */
+/* Tablet and Mobile */
+
+@media (max-width: 900px) {
+    .dashboard-main {
+        width: calc(100% - 190px);
+        margin-left: 190px;
+        padding: 35px 25px;
+    }
+}
 
 @media (max-width: 650px) {
     .company-header {
@@ -326,8 +356,9 @@
     }
 
     .dashboard-main {
-        width: 92%;
-        padding: 25px 0;
+        width: calc(100% - 68px);
+        margin-left: 68px;
+        padding: 25px 15px;
     }
 
     .welcome-section {
@@ -371,5 +402,24 @@
 
     .contact-heading {
         grid-column: auto;
+    }
+}
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .welcome-section,
+    .company-section,
+    .motivation-section,
+    .contact-section {
+        animation: none;
+    }
+
+    .attendance-link {
+        transition: none;
+    }
+
+    .attendance-link:hover {
+        transform: none;
     }
 }

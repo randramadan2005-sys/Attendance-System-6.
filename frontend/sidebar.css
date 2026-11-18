@@ -80,6 +80,10 @@
     border-radius: 10px;
     border: 1px solid transparent;
 
+    cursor: pointer;
+    position: relative;
+    z-index: 101;
+
     transition: background 0.2s ease,
                 color 0.2s ease,
                 transform 0.2s ease;
@@ -112,7 +116,46 @@
     line-height: 1.8;
 }
 
-/* Move the page content beside the sidebar */
+/* ===== Logout Button ===== */
+
+.sidebar-logout {
+    padding: 15px 10px;
+    margin-top: 12px;
+    border-top: 1px solid #414037;
+}
+
+.logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    background: transparent;
+    color: #d6d4cb;
+
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+
+    transition: background 0.2s ease,
+                color 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(198, 183, 122, 0.18);
+    color: #c6b77a;
+}
+
+.logout-btn span:first-child {
+    font-size: 18px;
+}
+
+/* ===== Dashboard Layout ===== */
 
 .dashboard-body .company-header,
 .dashboard-body .dashboard-main,
@@ -136,9 +179,10 @@
     padding: 20px;
 }
 
-/* Responsive layout */
+/* ===== Responsive Dashboard ===== */
 
 @media (max-width: 800px) {
+
     .sidebar {
         width: 190px;
         padding: 22px 12px;
@@ -175,6 +219,7 @@
 }
 
 @media (max-width: 520px) {
+
     .sidebar {
         width: 68px;
         padding: 18px 8px;
@@ -204,6 +249,20 @@
 
     .sidebar-icon {
         font-size: 20px;
+    }
+
+    .sidebar-logout {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .logout-btn {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    .logout-btn span:last-child {
+        display: none;
     }
 
     .dashboard-body .company-header,
@@ -309,3 +368,66 @@
         padding-right: 10px;
     }
 }
+
+/* ===== Accessibility ===== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sidebar-link,
+    .logout-btn {
+        transition: none;
+    }
+}
+
+/* ===== Dashboard Final Alignment Fix ===== */
+
+.dashboard-body .dashboard-main {
+    width: calc(100% - 245px);
+    max-width: none;
+    margin-left: 245px;
+    margin-right: 0;
+
+    padding: 0 40px 35px;
+    box-sizing: border-box;
+}
+
+/* Center all dashboard sections */
+.dashboard-body .dashboard-main > * {
+    width: 100%;
+    max-width: 1080px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-sizing: border-box;
+}
+
+/* Remove space between company header and welcome box */
+.dashboard-body .company-header {
+    margin-bottom: 0;
+}
+
+.dashboard-body .dashboard-main .welcome-section {
+    margin-top: 0;
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+
+    .dashboard-body .dashboard-main {
+        width: calc(100% - 190px);
+        margin-left: 190px;
+        padding: 0 20px 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+
+    .dashboard-body .dashboard-main {
+        width: calc(100% - 68px);
+        margin-left: 68px;
+        padding: 0 10px 20px;
+    }
+}
+

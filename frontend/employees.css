@@ -1,0 +1,198 @@
+
+/* ========================================
+   Nexora Employees Page
+======================================== */
+
+.employees-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: #f5f4f0;
+    color: #25251f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.employees-body *,
+.employees-body *::before,
+.employees-body *::after {
+    box-sizing: border-box;
+}
+
+/* Main Content */
+
+.employees-main {
+    margin-left: 245px;
+    min-height: 100vh;
+    padding: 55px 45px;
+}
+
+/* Header */
+
+.employees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.employees-subtitle {
+    color: #a18c53;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.employees-header h1 {
+    font-size: 38px;
+    margin: 0 0 12px;
+    color: #25251f;
+}
+
+.employees-description {
+    color: #77776f;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Employee Count */
+
+.employees-count {
+    background: #20201d;
+    color: white;
+    padding: 22px 30px;
+    border-radius: 12px;
+    min-width: 155px;
+    text-align: center;
+}
+
+.employees-count span {
+    display: block;
+    font-size: 12px;
+    color: #d1c7a7;
+    margin-bottom: 8px;
+}
+
+.employees-count strong {
+    display: block;
+    font-size: 32px;
+}
+
+/* Table Section */
+
+.employees-table-section {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.table-heading {
+    margin-bottom: 25px;
+}
+
+.table-heading h2 {
+    font-size: 21px;
+    margin: 0 0 8px;
+}
+
+.table-heading p {
+    color: #888880;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Table */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.employees-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.employees-table thead {
+    background: #20201d;
+    color: white;
+}
+
+.employees-table th {
+    padding: 18px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.employees-table td {
+    padding: 20px 16px;
+    border-bottom: 1px solid #eeeeea;
+    font-size: 14px;
+    color: #44443e;
+    white-space: nowrap;
+}
+
+.employees-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.employees-table tbody tr:hover {
+    background: #f8f6ef;
+}
+
+.employees-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.employees-table td:first-child {
+    color: #a18c53;
+    font-weight: bold;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+    .employees-main {
+        margin-left: 190px;
+        padding: 35px 20px;
+    }
+
+    .employees-header h1 {
+        font-size: 30px;
+    }
+
+    .employees-table-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .employees-main {
+        margin-left: 68px;
+        padding: 25px 12px;
+    }
+
+    .employees-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .employees-header h1 {
+        font-size: 26px;
+    }
+
+    .employees-count {
+        padding: 14px 22px;
+    }
+
+    .employees-table th,
+    .employees-table td {
+        padding: 14px 12px;
+        font-size: 12px;
+    }
+}
