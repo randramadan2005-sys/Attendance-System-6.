@@ -116,7 +116,9 @@
     margin-top: 0;
 }
 
-/* Temporary Leave Card */
+/* =====================================
+   TEMPORARY LEAVE CARD
+===================================== */
 
 .leave-card {
     background: #292929;
@@ -183,7 +185,47 @@
     transform: translateY(-2px);
 }
 
-/* Messages */
+/* =====================================
+   LOGOUT BUTTON
+   KEEP THE SAME DESIGN AS OTHER PAGES
+===================================== */
+
+.attendance-page .sidebar-logout .logout-btn {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+
+    background: transparent;
+    color: #d6d4cb;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: normal;
+    text-align: left;
+
+    cursor: pointer;
+    transform: none;
+}
+
+.attendance-page .sidebar-logout .logout-btn:hover {
+    background: rgba(198, 183, 122, 0.18);
+    color: #c6b77a;
+    transform: none;
+}
+
+.attendance-page .sidebar-logout .logout-btn span:first-child {
+    font-size: 18px;
+}
+
+/* =====================================
+   MESSAGES
+===================================== */
 
 #attendanceMessage,
 #leaveMessage {
@@ -210,6 +252,19 @@
 
 .history-button:hover {
     background: #444444;
+}
+
+/* =====================================
+   AI ATTENDANCE SUMMARY
+===================================== */
+
+.ai-card {
+    margin-bottom: 24px;
+}
+
+#aiSummaryResult {
+    margin-top: 18px;
+    line-height: 1.7;
 }
 
 /* =====================================

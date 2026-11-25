@@ -5,7 +5,7 @@ import sqlite3
 from datetime import timedelta
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from google import genai
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -26,7 +26,7 @@ from database import get_connection, init_db
 # 1. INITIALIZATION
 # =====================================
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"), override=True)
 
 app = Flask(__name__)
 
@@ -466,13 +466,10 @@ def attendance_history():
 @app.route("/api/ai/attendance-summary", methods=["POST"])
 @jwt_required()
 def ai_attendance_summary():
-
     try:
-
         user_id = int(get_jwt_identity())
 
         with get_connection() as connection:
-
             employee = connection.execute(
                 """
                 SELECT name
@@ -483,7 +480,6 @@ def ai_attendance_summary():
             ).fetchone()
 
             if not employee:
-
                 return jsonify({
                     "error": "Employee not found."
                 }), 404
@@ -502,7 +498,6 @@ def ai_attendance_summary():
             attendance_data = []
 
             for record in records:
-
                 breaks = connection.execute(
                     """
                     SELECT leave_time, expected_return, actual_return
@@ -527,20 +522,18 @@ def ai_attendance_summary():
                 })
 
         if not attendance_data:
-
             return jsonify({
                 "summary": "No attendance records found."
             }), 200
 
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("GEMINI_API_KEY")
 
         if not api_key:
-
             return jsonify({
-                "error": "OpenAI API key is missing. Please check your .env file."
+                "error": "Gemini API key is missing. Please check your .env file."
             }), 503
 
-        client = OpenAI(api_key=api_key)
+        client = genai.Client(api_key=api_key)
 
         prompt = f"""
 You are an employee attendance report assistant.
@@ -573,21 +566,28 @@ Important:
 - Use clear and professional language.
 """
 
-        response = client.responses.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-5.5"),
-            input=prompt
+        interaction = client.interactions.create(
+            model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
+            input=prompt,
+            store=False
         )
 
+        summary = interaction.output_text
+
+        if not summary:
+            return jsonify({
+                "error": "Gemini did not return a summary. Please try again."
+            }), 502
+
         return jsonify({
-            "summary": response.output_text
+            "summary": summary
         }), 200
 
     except Exception as error:
-
-        print("AI Summary Error:", repr(error))
+        print("Gemini AI Summary Error:", repr(error))
 
         return jsonify({
-            "error": str(error)
+            "error": "Unable to generate AI summary. Please check the backend terminal and try again."
         }), 500
 
 
